@@ -41,10 +41,11 @@ struct GamePad :View{
         Grid{
             ForEach(0..<self.pad.maxX,id: \.self){x in
                 GridRow{
+                    ForEach(0..<self.pad.maxY,id:\.self){ y in
                     Image(systemName: "globe")
                         .imageScale(.large)
                         .foregroundColor(.accentColor)
-                }
+                }}
             }
         }
     }

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Block()
+        let pad = Pad(row: 8, column: 8)
+        GamePad(pad: pad)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

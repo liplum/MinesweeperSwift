@@ -11,28 +11,8 @@
 		EADCEA0F292CB0DD006A19DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA0E292CB0DD006A19DF /* ContentView.swift */; };
 		EADCEA11292CB0DE006A19DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EADCEA10292CB0DE006A19DF /* Assets.xcassets */; };
 		EADCEA14292CB0DE006A19DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EADCEA13292CB0DE006A19DF /* Preview Assets.xcassets */; };
-		EADCEA1F292CB0DE006A19DF /* MinesweeperSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA1E292CB0DE006A19DF /* MinesweeperSwiftTests.swift */; };
-		EADCEA29292CB0DE006A19DF /* MinesweeperSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA28292CB0DE006A19DF /* MinesweeperSwiftUITests.swift */; };
-		EADCEA2B292CB0DE006A19DF /* MinesweeperSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA2A292CB0DE006A19DF /* MinesweeperSwiftUITestsLaunchTests.swift */; };
 		EADCEA38292CB395006A19DF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA37292CB395006A19DF /* Game.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EADCEA1B292CB0DE006A19DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EADCEA01292CB0DD006A19DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EADCEA08292CB0DD006A19DF;
-			remoteInfo = MinesweeperSwift;
-		};
-		EADCEA25292CB0DE006A19DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EADCEA01292CB0DD006A19DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EADCEA08292CB0DD006A19DF;
-			remoteInfo = MinesweeperSwift;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EADCEA09292CB0DD006A19DF /* MinesweeperSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinesweeperSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,30 +21,11 @@
 		EADCEA10292CB0DE006A19DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EADCEA13292CB0DE006A19DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EADCEA15292CB0DE006A19DF /* MinesweeperSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinesweeperSwift.entitlements; sourceTree = "<group>"; };
-		EADCEA1A292CB0DE006A19DF /* MinesweeperSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EADCEA1E292CB0DE006A19DF /* MinesweeperSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperSwiftTests.swift; sourceTree = "<group>"; };
-		EADCEA24292CB0DE006A19DF /* MinesweeperSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EADCEA28292CB0DE006A19DF /* MinesweeperSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperSwiftUITests.swift; sourceTree = "<group>"; };
-		EADCEA2A292CB0DE006A19DF /* MinesweeperSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EADCEA37292CB395006A19DF /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EADCEA06292CB0DD006A19DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EADCEA17292CB0DE006A19DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EADCEA21292CB0DE006A19DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,8 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				EADCEA0B292CB0DD006A19DF /* MinesweeperSwift */,
-				EADCEA1D292CB0DE006A19DF /* MinesweeperSwiftTests */,
-				EADCEA27292CB0DE006A19DF /* MinesweeperSwiftUITests */,
 				EADCEA0A292CB0DD006A19DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				EADCEA09292CB0DD006A19DF /* MinesweeperSwift.app */,
-				EADCEA1A292CB0DE006A19DF /* MinesweeperSwiftTests.xctest */,
-				EADCEA24292CB0DE006A19DF /* MinesweeperSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,23 +72,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		EADCEA1D292CB0DE006A19DF /* MinesweeperSwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				EADCEA1E292CB0DE006A19DF /* MinesweeperSwiftTests.swift */,
-			);
-			path = MinesweeperSwiftTests;
-			sourceTree = "<group>";
-		};
-		EADCEA27292CB0DE006A19DF /* MinesweeperSwiftUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EADCEA28292CB0DE006A19DF /* MinesweeperSwiftUITests.swift */,
-				EADCEA2A292CB0DE006A19DF /* MinesweeperSwiftUITestsLaunchTests.swift */,
-			);
-			path = MinesweeperSwiftUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,42 +92,6 @@
 			productReference = EADCEA09292CB0DD006A19DF /* MinesweeperSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EADCEA19292CB0DE006A19DF /* MinesweeperSwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EADCEA31292CB0DE006A19DF /* Build configuration list for PBXNativeTarget "MinesweeperSwiftTests" */;
-			buildPhases = (
-				EADCEA16292CB0DE006A19DF /* Sources */,
-				EADCEA17292CB0DE006A19DF /* Frameworks */,
-				EADCEA18292CB0DE006A19DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EADCEA1C292CB0DE006A19DF /* PBXTargetDependency */,
-			);
-			name = MinesweeperSwiftTests;
-			productName = MinesweeperSwiftTests;
-			productReference = EADCEA1A292CB0DE006A19DF /* MinesweeperSwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EADCEA23292CB0DE006A19DF /* MinesweeperSwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EADCEA34292CB0DE006A19DF /* Build configuration list for PBXNativeTarget "MinesweeperSwiftUITests" */;
-			buildPhases = (
-				EADCEA20292CB0DE006A19DF /* Sources */,
-				EADCEA21292CB0DE006A19DF /* Frameworks */,
-				EADCEA22292CB0DE006A19DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EADCEA26292CB0DE006A19DF /* PBXTargetDependency */,
-			);
-			name = MinesweeperSwiftUITests;
-			productName = MinesweeperSwiftUITests;
-			productReference = EADCEA24292CB0DE006A19DF /* MinesweeperSwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,14 +104,6 @@
 				TargetAttributes = {
 					EADCEA08292CB0DD006A19DF = {
 						CreatedOnToolsVersion = 14.1;
-					};
-					EADCEA19292CB0DE006A19DF = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = EADCEA08292CB0DD006A19DF;
-					};
-					EADCEA23292CB0DE006A19DF = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = EADCEA08292CB0DD006A19DF;
 					};
 				};
 			};
@@ -225,8 +121,6 @@
 			projectRoot = "";
 			targets = (
 				EADCEA08292CB0DD006A19DF /* MinesweeperSwift */,
-				EADCEA19292CB0DE006A19DF /* MinesweeperSwiftTests */,
-				EADCEA23292CB0DE006A19DF /* MinesweeperSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,20 +132,6 @@
 			files = (
 				EADCEA14292CB0DE006A19DF /* Preview Assets.xcassets in Resources */,
 				EADCEA11292CB0DE006A19DF /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EADCEA18292CB0DE006A19DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EADCEA22292CB0DE006A19DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,37 +148,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EADCEA16292CB0DE006A19DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EADCEA1F292CB0DE006A19DF /* MinesweeperSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EADCEA20292CB0DE006A19DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EADCEA29292CB0DE006A19DF /* MinesweeperSwiftUITests.swift in Sources */,
-				EADCEA2B292CB0DE006A19DF /* MinesweeperSwiftUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EADCEA1C292CB0DE006A19DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EADCEA08292CB0DD006A19DF /* MinesweeperSwift */;
-			targetProxy = EADCEA1B292CB0DE006A19DF /* PBXContainerItemProxy */;
-		};
-		EADCEA26292CB0DE006A19DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EADCEA08292CB0DD006A19DF /* MinesweeperSwift */;
-			targetProxy = EADCEA25292CB0DE006A19DF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EADCEA2C292CB0DE006A19DF /* Debug */ = {
@@ -468,78 +318,6 @@
 			};
 			name = Release;
 		};
-		EADCEA32292CB0DE006A19DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6PL7UWKXD9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.liplum.MinesweeperSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinesweeperSwift.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MinesweeperSwift";
-			};
-			name = Debug;
-		};
-		EADCEA33292CB0DE006A19DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6PL7UWKXD9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.liplum.MinesweeperSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinesweeperSwift.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MinesweeperSwift";
-			};
-			name = Release;
-		};
-		EADCEA35292CB0DE006A19DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6PL7UWKXD9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.liplum.MinesweeperSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = MinesweeperSwift;
-			};
-			name = Debug;
-		};
-		EADCEA36292CB0DE006A19DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6PL7UWKXD9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.liplum.MinesweeperSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = MinesweeperSwift;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,24 +335,6 @@
 			buildConfigurations = (
 				EADCEA2F292CB0DE006A19DF /* Debug */,
 				EADCEA30292CB0DE006A19DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EADCEA31292CB0DE006A19DF /* Build configuration list for PBXNativeTarget "MinesweeperSwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EADCEA32292CB0DE006A19DF /* Debug */,
-				EADCEA33292CB0DE006A19DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EADCEA34292CB0DE006A19DF /* Build configuration list for PBXNativeTarget "MinesweeperSwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EADCEA35292CB0DE006A19DF /* Debug */,
-				EADCEA36292CB0DE006A19DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

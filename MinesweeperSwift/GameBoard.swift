@@ -77,7 +77,7 @@ struct Block: View {
       ZStack {
         blockBackground
         let flagImg = Image(systemName: "flag.fill")
-          flagImg.colorInvert()
+        flagImg.colorInvert()
       }
         .onTapGesture {
           state.reset()

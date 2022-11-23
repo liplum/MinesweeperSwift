@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        let pad = Pad(row: 8, column: 8)
-        GamePad(pad: pad)
+        var pad = Pad(row: 8, column: 8)
+        pad.generateBlocks(fillWith: 8)
+        let gameView = GamePad(pad: pad)
+        return gameView
     }
 }
 

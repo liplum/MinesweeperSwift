@@ -65,10 +65,22 @@ struct Pad {
       slots.count
     }
   }
+
+  func checkInRange(_ x: Int, _ y: Int) -> Bool {
+    0 <= x && x < maxX && 0 <= y && y < maxY
+  }
+
+  func packCoord(x: Int, y: Int) -> Int {
+    x * maxY + y
+  }
+
+  func unpackCoord(index: Int) -> (x: Int, y: Int) {
+    (index / maxY, index % maxY)
+  }
 }
 
 extension Pad {
-  mutating func generateBlocks(with mines: Int) {
+  mutating func generateBlocks(fillWith mines: Int) {
     let mines = min(mines, count)
     if mines == count {
       for i in 0..<count {
@@ -83,11 +95,35 @@ extension Pad {
         restIndices.remove(at: selectedIndexInRest)
         selectedIndices.append(selectedIndex2Add)
       }
-      for selectedIndex in selectedIndices{
+      for selectedIndex in selectedIndices {
         slots[selectedIndex] = BlockEntity(isMine: true)
       }
-
-
     }
+    for x in 0..<maxX {
+      for y in 0..<maxY {
+        let entity = self[x, y]
+        if !entity.isMine {
+          self[x, y] = BlockEntity(surroundedWith: countNearbyMines(x, y))
+        }
+      }
+    }
+  }
+
+  static let nearbyDelta = [
+    (-1, -1), (0, 1), (1, 1),
+    (-1, 0), /*(0,0)*/(1, 0),
+    (-1, -1), (0, -1), (1, -1)
+  ]
+
+  func countNearbyMines(_ x: Int, _ y: Int) -> Int {
+    var mines = 0
+    for (deltaX, deltaY) in Pad.nearbyDelta {
+      let nborX = deltaX + x
+      let nborY = deltaY + y
+      if checkInRange(nborX, nborY) && self[nborX, nborY].isMine {
+        mines += 1
+      }
+    }
+    return mines
   }
 }

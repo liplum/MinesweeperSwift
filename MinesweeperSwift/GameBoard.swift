@@ -43,6 +43,8 @@ struct Block: View {
 
   @State
   var state: BlockState = .facedown
+  @Environment(\.colorScheme)
+  var colorScheme
   @GestureState var flagging = false
   var body: some View {
     switch state {
@@ -62,11 +64,15 @@ struct Block: View {
         .onTapGesture {
           state.reset()
         }
-    default:
-      if entity.mineNearby > 0 {
-        Text(String(entity.mineNearby))
+    case .revealed:
+      if entity.isMine {
+        Image(systemName: "sun.max")
       } else {
-        Text(" ")
+        if entity.mineNearby > 0 {
+          Text(String(entity.mineNearby))
+        } else {
+          Text(" ")
+        }
       }
     }
   }

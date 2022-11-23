@@ -25,7 +25,11 @@ struct GamePad: View {
       ForEach(0..<pad.maxX, id: \.self) { x in
         GridRow {
           ForEach(0..<pad.maxY, id: \.self) { y in
-            Block(entity: pad[x, y]).frame(width: blockSize, height: blockSize)
+            let blockEntity = pad[x, y]
+            Block(entity: blockEntity, coord: (x, y)) {
+
+            }
+              .frame(width: blockSize, height: blockSize)
           }
         }
       }
@@ -36,9 +40,16 @@ struct GamePad: View {
 
 struct Block: View {
   let entity: BlockEntity
+  let coord: (x: Int, y: Int)
+  let onFlip: () -> Void
 
-  init(entity: BlockEntity) {
+  init(
+    entity: BlockEntity, coord: (x: Int, y: Int),
+    onFlip: @escaping () -> Void
+  ) {
     self.entity = entity
+    self.coord = coord
+    self.onFlip = onFlip
   }
 
   @State
@@ -46,20 +57,27 @@ struct Block: View {
   @Environment(\.colorScheme)
   var colorScheme
   @GestureState var flagging = false
+  var blockBackground: some View {
+    get {
+      colorScheme == .dark ? Color.gray : Color.brown
+    }
+  }
+
   var body: some View {
     switch state {
     case .facedown:
-      Color.gray
+      blockBackground
         .onTapGesture {
-          state.reveal()
+          state.flip()
         }
         .onLongPressGesture(minimumDuration: 0.1) {
           state.flagOn()
         }
     case .flag:
       ZStack {
-        Color.gray
-        Image(systemName: "flag.fill")
+        blockBackground
+        let flagImg = Image(systemName: "flag.fill")
+          flagImg.colorInvert()
       }
         .onTapGesture {
           state.reset()

@@ -8,7 +8,7 @@ import Foundation
 enum BlockState {
   case facedown, flag, revealed
 
-  mutating func reveal() {
+  mutating func flip() {
     self = .revealed
   }
 
@@ -79,6 +79,7 @@ struct Pad {
   }
 }
 
+/// For generating blocks
 extension Pad {
   mutating func generateBlocks(fillWith mines: Int) {
     let mines = min(mines, count)

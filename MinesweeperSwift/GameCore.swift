@@ -10,14 +10,14 @@ class GameCenter {
 }
 
 enum BlockState {
-  case facedown, flag, revealed
+  case facedown, flagged, revealed
 
   mutating func flip() {
     self = .revealed
   }
 
   mutating func flagOn() {
-    self = .flag
+    self = .flagged
   }
 
   mutating func reset() {
@@ -203,6 +203,17 @@ extension GamePad {
     if isGameOver {
       return
     }
-    block.state.flagOn()
+    if block.state == .facedown {
+      block.state.flagOn()
+    }
+  }
+
+  func unflag(block: BlockEntity) {
+    if isGameOver {
+      return
+    }
+    if block.state == .flagged {
+      block.state.reset()
+    }
   }
 }

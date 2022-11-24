@@ -75,14 +75,14 @@ struct Block: View {
         .onLongPressGesture(minimumDuration: 0.1) {
           pad.flag(block: entity)
         }
-    case .flag:
+    case .flagged:
       ZStack {
         blockBackground
         let flagImg = Image(systemName: "flag.fill")
         flagImg.colorInvert()
       }
         .onTapGesture {
-          entity.state.reset()
+          pad.unflag(block: entity)
         }
     case .revealed:
       if entity.isMine {

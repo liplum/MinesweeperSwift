@@ -7,7 +7,7 @@ import SwiftUI
 
 struct MinesweeperCommands: Commands {
   var body: some Commands {
-    CommandMenu("Minesweeper") {
+    CommandMenu("Game") {
 
     }
   }

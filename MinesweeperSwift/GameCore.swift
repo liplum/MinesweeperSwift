@@ -5,10 +5,6 @@
 import Foundation
 import SwiftUI
 
-class GameCenter {
-  static let gameOver = Notification.Name("GameOverEvent")
-}
-
 enum BlockState {
   case facedown, flagged, revealed
 
@@ -44,16 +40,20 @@ class BlockEntity: ObservableObject, Identifiable, Equatable {
   }
 }
 
-class GamePad: ObservableObject {
-  let name: String
+class GamePad: ObservableObject, Identifiable {
+  static let `default` = GamePad(name: "", row: 0, column: 0, mines: 0)
+  let id: String
   @Published var slots: [BlockEntity]
   let maxX, maxY: Int
   @Published var isGameOver = false
+  @State var flagCount = 0
+  let mineCount: Int
 
-  init(name: String, row x: Int, column y: Int) {
-    self.name = name
+  init(name: String, row x: Int, column y: Int, mines: Int) {
+    id = name
     maxX = x
     maxY = y
+    mineCount = mines
     slots = (0..<maxX * maxY).map { index in
       BlockEntity(id: index, x: index / y, y: index % y)
     }
@@ -98,8 +98,8 @@ class GamePad: ObservableObject {
 
 /// For generating blocks
 extension GamePad {
-  func generateBlocks(place mines: Int) {
-    let mines = min(mines, count)
+  func generateBlocks() {
+    let mines = min(mineCount, count)
     if mines == count {
       for i in 0..<count {
         slots[i].isMine = true

@@ -7,17 +7,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MinesweeperView: View {
+  var gamePad: GamePad
+
+  init() {
+    gamePad = GamePad(name: "Test Game", row: 8, column: 8, mines: 8)
+    gamePad.generateBlocks()
+  }
+
   var body: some View {
-    let pad = GamePad(name: "Test Game", row: 8, column: 8)
-    pad.generateBlocks(place: 8)
-    return GamePadView(pad: pad)
+    GamePadView(pad: gamePad)
   }
 }
 
-
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    MinesweeperView()
   }
 }

@@ -75,6 +75,16 @@ struct Block: View {
         .onLongPressGesture(minimumDuration: 0.1) {
           pad.flag(block: entity)
         }
+        .contextMenu {
+          if !pad.isGameOver {
+            Button("Flag") {
+              pad.flag(block: entity)
+            }
+            Button("Flip") {
+              pad.flip(block: entity)
+            }
+          }
+        }
     case .flagged:
       ZStack {
         blockBackground
@@ -84,6 +94,13 @@ struct Block: View {
         .onTapGesture {
           pad.unflag(block: entity)
         }
+        .contextMenu {
+          if !pad.isGameOver {
+            Button("Unflag") {
+              pad.unflag(block: entity)
+            }
+          }
+        }
     case .revealed:
       if entity.isMine {
         Image(systemName: "sun.max")
@@ -91,6 +108,11 @@ struct Block: View {
         Text(entity.mineNearby > 0 ? String(entity.mineNearby) : " ")
           .onTapGesture(count: 2) {
             pad.flipAround(block: entity)
+          }
+          .contextMenu {
+            Button("Flip Around") {
+              pad.flipAround(block: entity)
+            }
           }
       }
     }

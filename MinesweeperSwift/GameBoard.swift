@@ -68,7 +68,13 @@ struct Block: View {
   var body: some View {
     switch entity.state {
     case .facedown:
-      blockBackground
+      ZStack {
+        blockBackground
+        if pad.isGameOver && entity.isMine {
+          Image(systemName: "sun.max")
+            .colorInvert()
+        }
+      }
         .onTapGesture {
           pad.flip(block: entity)
         }
@@ -96,7 +102,7 @@ struct Block: View {
         }
         .contextMenu {
           if !pad.isGameOver {
-            Button("Unflag") {
+            Button("Remove flag") {
               pad.unflag(block: entity)
             }
           }
@@ -110,8 +116,10 @@ struct Block: View {
             pad.flipAround(block: entity)
           }
           .contextMenu {
-            Button("Flip Around") {
-              pad.flipAround(block: entity)
+            if !pad.isGameOver {
+              Button("Flip around") {
+                pad.flipAround(block: entity)
+              }
             }
           }
       }

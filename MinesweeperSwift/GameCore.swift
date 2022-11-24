@@ -163,6 +163,7 @@ extension GamePad {
 /// For handling game logic
 extension GamePad {
 
+  /// Flip the [block] when its facedown
   func flip(block: BlockEntity) {
     if isGameOver {
       return
@@ -173,7 +174,7 @@ extension GamePad {
       NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
     } else if block.mineNearby == 0 {
       forEachNearbyMines(block) { other in
-        if other.state != .revealed {
+        if other.state == .facedown {
           flip(block: other)
         }
       }
@@ -187,10 +188,10 @@ extension GamePad {
     var metMine = false
     forEachNearbyMines(center) { other in
       if other.state == .facedown {
-        other.state.flip()
         if other.isMine {
           metMine = true
         }
+        flip(block: other)
       }
     }
     if metMine {

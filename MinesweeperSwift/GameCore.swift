@@ -162,6 +162,7 @@ extension GamePad {
 
 /// For handling game logic
 extension GamePad {
+
   func flip(block: BlockEntity) {
     if isGameOver {
       return
@@ -170,14 +171,31 @@ extension GamePad {
     if block.isMine {
       isGameOver = true
       NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
-    } else {
-      if !block.isMine && block.mineNearby == 0 {
-        forEachNearbyMines(block) { other in
-          if other.state != .revealed {
-            flip(block: other)
-          }
+    } else if block.mineNearby == 0 {
+      forEachNearbyMines(block) { other in
+        if other.state != .revealed {
+          flip(block: other)
         }
       }
+    }
+  }
+
+  func flipAround(block center: BlockEntity) {
+    if isGameOver {
+      return
+    }
+    var metMine = false
+    forEachNearbyMines(center) { other in
+      if other.state == .facedown {
+        other.state.flip()
+        if other.isMine {
+          metMine = true
+        }
+      }
+    }
+    if metMine {
+      isGameOver = true
+      NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
     }
   }
 

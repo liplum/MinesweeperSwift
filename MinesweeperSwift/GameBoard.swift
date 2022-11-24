@@ -88,11 +88,10 @@ struct Block: View {
       if entity.isMine {
         Image(systemName: "sun.max")
       } else {
-        if entity.mineNearby > 0 {
-          Text(String(entity.mineNearby))
-        } else {
-          Text(" ")
-        }
+        Text(entity.mineNearby > 0 ? String(entity.mineNearby) : " ")
+          .onTapGesture(count: 2) {
+            pad.flipAround(block: entity)
+          }
       }
     }
   }

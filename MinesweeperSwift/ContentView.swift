@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        var pad = Pad(row: 8, column: 8)
-        pad.generateBlocks(place: 8)
-        let gameView = GamePad(pad: pad)
-        return gameView
-    }
+  var body: some View {
+    let pad = GamePad(name: "Test Game", row: 8, column: 8)
+    pad.generateBlocks(place: 8)
+    let gameView = GamePadView(pad: pad)
+    return gameView
+  }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

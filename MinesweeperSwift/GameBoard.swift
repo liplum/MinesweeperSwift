@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 
-struct GamePad: View {
-  let pad: Pad
+struct GamePadView: View {
+  @ObservedObject var pad: GamePad
   let margin: CGFloat
   let blockSize: CGFloat
 
-  init(pad: Pad, blockSize: CGFloat = 24, margin: CGFloat = 1) {
+  init(pad: GamePad, blockSize: CGFloat = 24, margin: CGFloat = 1) {
     self.pad = pad
     self.margin = margin
     self.blockSize = blockSize
@@ -26,9 +26,7 @@ struct GamePad: View {
         GridRow {
           ForEach(0..<pad.maxY, id: \.self) { y in
             let blockEntity = pad[x, y]
-            Block(entity: blockEntity, coord: (x, y)) {
-
-            }
+            Block(entity: blockEntity, pad: pad)
               .frame(width: blockSize, height: blockSize)
           }
         }
@@ -39,21 +37,17 @@ struct GamePad: View {
 
 
 struct Block: View {
-  let entity: BlockEntity
-  let coord: (x: Int, y: Int)
-  let onFlip: () -> Void
+  @ObservedObject var entity: BlockEntity
+  @ObservedObject var pad: GamePad
 
   init(
-    entity: BlockEntity, coord: (x: Int, y: Int),
-    onFlip: @escaping () -> Void
+    entity: BlockEntity,
+    pad: GamePad
   ) {
     self.entity = entity
-    self.coord = coord
-    self.onFlip = onFlip
+    self.pad = pad
   }
 
-  @State
-  var state: BlockState = .facedown
   @Environment(\.colorScheme)
   var colorScheme
   @GestureState var flagging = false
@@ -64,14 +58,14 @@ struct Block: View {
   }
 
   var body: some View {
-    switch state {
+    switch entity.state {
     case .facedown:
       blockBackground
         .onTapGesture {
-          state.flip()
+          pad.flip(block: entity)
         }
         .onLongPressGesture(minimumDuration: 0.1) {
-          state.flagOn()
+          entity.state.flagOn()
         }
     case .flag:
       ZStack {
@@ -80,7 +74,7 @@ struct Block: View {
         flagImg.colorInvert()
       }
         .onTapGesture {
-          state.reset()
+          entity.state.reset()
         }
     case .revealed:
       if entity.isMine {

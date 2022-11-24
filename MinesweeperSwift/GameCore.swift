@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 enum BlockState {
   case facedown, flag, revealed
@@ -21,27 +21,36 @@ enum BlockState {
   }
 }
 
-struct BlockEntity {
-  static let Default = BlockEntity(x: 0, y: 0)
+class BlockEntity: ObservableObject, Identifiable, Equatable {
+  static func ==(lhs: BlockEntity, rhs: BlockEntity) -> Bool {
+    lhs.id == rhs.id
+  }
+
+  let id: Int
+  static let Default = BlockEntity(id: -1, x: 0, y: 0)
   var isMine: Bool = false
   var mineNearby: Int = 0
   var x, y: Int
+  @Published var state: BlockState = .facedown
 
-  init(x: Int, y: Int) {
+  init(id: Int, x: Int, y: Int) {
+    self.id = id
     self.x = x
     self.y = y
   }
 }
 
-struct Pad {
-  var slots: [BlockEntity]
+class GamePad: ObservableObject {
+  let name: String
+  @Published var slots: [BlockEntity]
   let maxX, maxY: Int
 
-  init(row x: Int, column y: Int) {
+  init(name: String, row x: Int, column y: Int) {
+    self.name = name
     maxX = x
     maxY = y
     slots = (0..<maxX * maxY).map { index in
-      BlockEntity(x: index / y, y: index % y)
+      BlockEntity(id: index, x: index / y, y: index % y)
     }
   }
 
@@ -83,8 +92,8 @@ struct Pad {
 }
 
 /// For generating blocks
-extension Pad {
-  mutating func generateBlocks(place mines: Int) {
+extension GamePad {
+  func generateBlocks(place mines: Int) {
     let mines = min(mines, count)
     if mines == count {
       for i in 0..<count {
@@ -121,7 +130,7 @@ extension Pad {
 
   func countNearbyMines(_ x: Int, _ y: Int) -> Int {
     var mines = 0
-    for (deltaX, deltaY) in Pad.nearbyDelta {
+    for (deltaX, deltaY) in GamePad.nearbyDelta {
       let nborX = deltaX + x
       let nborY = deltaY + y
       if checkInRange(nborX, nborY) && self[nborX, nborY].isMine {
@@ -130,9 +139,32 @@ extension Pad {
     }
     return mines
   }
+
+  func forEachNearbyMines(
+    _ center: BlockEntity,
+    query: (_ other: BlockEntity) -> Void
+  ) {
+    for (deltaX, deltaY) in GamePad.nearbyDelta {
+      let nborX = deltaX + center.x
+      let nborY = deltaY + center.y
+      if checkInRange(nborX, nborY) {
+        let other = self[nborX, nborY]
+        query(other)
+      }
+    }
+  }
 }
 
 /// For handling game logic
-extension Pad {
-
+extension GamePad {
+  func flip(block: BlockEntity) {
+    block.state.flip()
+    if !block.isMine && block.mineNearby == 0 {
+      forEachNearbyMines(block) { other in
+        if other.state != .revealed {
+          flip(block: other)
+        }
+      }
+    }
+  }
 }

@@ -5,6 +5,10 @@
 import Foundation
 import SwiftUI
 
+class GameCenter {
+  static let gameOver = Notification.Name("GameOverEvent")
+}
+
 enum BlockState {
   case facedown, flag, revealed
 
@@ -44,6 +48,7 @@ class GamePad: ObservableObject {
   let name: String
   @Published var slots: [BlockEntity]
   let maxX, maxY: Int
+  @Published var isGameOver = false
 
   init(name: String, row x: Int, column y: Int) {
     self.name = name
@@ -158,13 +163,28 @@ extension GamePad {
 /// For handling game logic
 extension GamePad {
   func flip(block: BlockEntity) {
+    if isGameOver {
+      return
+    }
     block.state.flip()
-    if !block.isMine && block.mineNearby == 0 {
-      forEachNearbyMines(block) { other in
-        if other.state != .revealed {
-          flip(block: other)
+    if block.isMine {
+      isGameOver = true
+      NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
+    } else {
+      if !block.isMine && block.mineNearby == 0 {
+        forEachNearbyMines(block) { other in
+          if other.state != .revealed {
+            flip(block: other)
+          }
         }
       }
     }
+  }
+
+  func flag(block: BlockEntity) {
+    if isGameOver {
+      return
+    }
+    block.state.flagOn()
   }
 }

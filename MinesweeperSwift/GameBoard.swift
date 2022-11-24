@@ -20,6 +20,8 @@ struct GamePadView: View {
     self.blockSize = blockSize
   }
 
+  @State var showGameOverDialog = false
+
   var body: some View {
     Grid(horizontalSpacing: margin, verticalSpacing: margin) {
       ForEach(0..<pad.maxX, id: \.self) { x in
@@ -32,6 +34,12 @@ struct GamePadView: View {
         }
       }
     }
+      .onReceive(NotificationCenter.default.publisher(for: GameCenter.gameOver)) { object in
+        showGameOverDialog = true
+      }
+      .confirmationDialog("Game Over!", isPresented: $showGameOverDialog) {
+
+      }
   }
 }
 
@@ -65,7 +73,7 @@ struct Block: View {
           pad.flip(block: entity)
         }
         .onLongPressGesture(minimumDuration: 0.1) {
-          entity.state.flagOn()
+          pad.flag(block: entity)
         }
     case .flag:
       ZStack {

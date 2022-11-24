@@ -11,8 +11,7 @@ struct ContentView: View {
   var body: some View {
     let pad = GamePad(name: "Test Game", row: 8, column: 8)
     pad.generateBlocks(place: 8)
-    let gameView = GamePadView(pad: pad)
-    return gameView
+    return GamePadView(pad: pad)
   }
 }
 

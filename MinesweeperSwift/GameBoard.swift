@@ -94,15 +94,27 @@ struct Block: View {
     case .flagged:
       ZStack {
         blockBackground
-        let flagImg = Image(systemName: "flag.fill")
-        flagImg.colorInvert()
+        if pad.isGameOver {
+          if entity.isMine {
+            Image(systemName: "sun.max")
+              .colorInvert()
+            Image(systemName: "checkmark")
+          } else {
+            Image(systemName: "flag.fill")
+              .colorInvert()
+            Image(systemName: "xmark")
+          }
+        }else {
+          Image(systemName: "flag.fill")
+            .colorInvert()
+        }
       }
         .onTapGesture {
           pad.unflag(block: entity)
         }
         .contextMenu {
           if !pad.isGameOver {
-            Button("Remove flag") {
+            Button("Remove Flag") {
               pad.unflag(block: entity)
             }
           }
@@ -117,7 +129,7 @@ struct Block: View {
           }
           .contextMenu {
             if !pad.isGameOver {
-              Button("Flip around") {
+              Button("Flip Around Blocks") {
                 pad.flipAround(block: entity)
               }
             }

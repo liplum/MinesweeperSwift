@@ -18,6 +18,9 @@ struct MinesweeperApp: App {
       .commands {
         MinesweeperCommands()
       }
+    Settings {
+      GameCreateView()
+    }
   }
 }
 

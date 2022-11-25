@@ -64,9 +64,10 @@ struct GameHeader: View {
     ZStack {
       HStack {
         if !pad.isGameOver {
-          Image(systemName: "flag.fill").onDrag {
-            NSItemProvider(object: NSString("flag"))
-          }
+          Image(systemName: "flag.fill")
+            .onDrag {
+              NSItemProvider(item: NSString("flag"), typeIdentifier: UTType.Name.flag)
+            }
         }
         Spacer()
       }
@@ -124,10 +125,7 @@ struct Block: View {
             }
           }
         }
-        .onDrop(of: [UTType.text], isTargeted: nil) { providers in
-          pad.flag(block: entity)
-          return true
-        }
+        .onDrop(of: [UTType.flag], delegate: FlagDropDelegate())
     case .flagged:
       ZStack {
         colorScheme.blockBackground
@@ -169,5 +167,33 @@ struct Block: View {
           }
       }
     }
+  }
+}
+
+struct FlagDropDelegate: DropDelegate {
+  func validateDrop(info: DropInfo) -> Bool {
+    info.hasItemsConforming(to: [UTType.flag])
+  }
+
+  func dropUpdated(info: DropInfo) -> DropProposal? {
+    DropProposal.init(operation: .copy)
+  }
+
+  func dropEntered(info: DropInfo) {
+  }
+
+  func dropExited(info: DropInfo) {
+  }
+
+  func performDrop(info: DropInfo) -> Bool {
+    for provider in info.itemProviders(for: [UTType.flag]) {
+      _ = provider.loadObject(ofClass: String.self) { pos, error in
+        DispatchQueue.main.async {
+          print(pos ?? "Null")
+        }
+      }
+    }
+    NSSound(named: "Submarine")?.play()
+    return true
   }
 }

@@ -11,7 +11,7 @@ struct MinesweeperView: View {
   @State var gamePad: GamePad
 
   init() {
-    gamePad = GamePad(name: "Test Game", row: 8, column: 8, mines: 8)
+    gamePad = GamePad(name: "Test Game", row:8, column: 8, mines: 8)
     gamePad.generateBlocks()
   }
 

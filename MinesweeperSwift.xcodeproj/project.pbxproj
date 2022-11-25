@@ -31,6 +31,7 @@
 		BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppCode_icon.png; path = assets/AppCode_icon.png; sourceTree = "<group>"; };
 		BE479839BCFFFB2FBA31D967 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		BE47984AD526682CA3153C29 /* GameCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCreate.swift; sourceTree = "<group>"; };
+		EA019E8C2930FEEB008C14C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EADCEA09292CB0DD006A19DF /* MinesweeperSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinesweeperSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADCEA0C292CB0DD006A19DF /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		EADCEA0E292CB0DD006A19DF /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		EADCEA0B292CB0DD006A19DF /* MinesweeperSwift */ = {
 			isa = PBXGroup;
 			children = (
+				EA019E8C2930FEEB008C14C5 /* Info.plist */,
 				EADCEA0C292CB0DD006A19DF /* App.swift */,
 				EADCEA0E292CB0DD006A19DF /* Homepage.swift */,
 				EADCEA37292CB395006A19DF /* GameBoard.swift */,
@@ -310,6 +312,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinesweeperSwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Minesweeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -339,6 +342,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinesweeperSwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Minesweeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

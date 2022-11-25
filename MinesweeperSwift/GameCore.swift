@@ -179,6 +179,7 @@ extension GamePad {
 
   /// Flip the [block] when its facedown
   func flip(block: BlockEntity) {
+    // TODO: Performance Issue: a heavy iteration will block the UI
     if isGameOver {
       return
     }

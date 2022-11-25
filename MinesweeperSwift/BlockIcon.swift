@@ -40,3 +40,28 @@ struct StepperField: View {
       }
   }
 }
+
+struct BlockIcon {
+  static var flag: some View {
+    Image(systemName: "flag.fill").colorInvert()
+  }
+  static var mine: some View {
+    Image(systemName: "sun.max")
+  }
+  static var checkmark: some View {
+    Image(systemName: "checkmark.circle").colorInvert()
+  }
+  static var xmark: some View {
+    Image(systemName: "xmark.circle")
+  }
+}
+
+extension ColorScheme {
+  var blockBackgroundColor: some View {
+    self == .dark ? Color.gray : Color.brown
+  }
+  var blockBackground: some View {
+    blockBackgroundColor
+      .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+  }
+}

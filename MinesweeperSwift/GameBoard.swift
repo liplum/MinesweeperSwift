@@ -23,17 +23,21 @@ struct GamePadView: View {
   @State var showGameOverDialog = false
 
   var body: some View {
-    Grid(horizontalSpacing: margin, verticalSpacing: margin) {
-      ForEach(0..<pad.maxX, id: \.self) { x in
-        GridRow {
-          ForEach(0..<pad.maxY, id: \.self) { y in
-            let blockEntity = pad[x, y]
-            Block(entity: blockEntity, pad: pad)
-              .frame(width: blockSize, height: blockSize)
+    VStack {
+      GameHeader(pad: pad).fixedSize()
+      Grid(horizontalSpacing: margin, verticalSpacing: margin) {
+        ForEach(0..<pad.maxX, id: \.self) { x in
+          GridRow {
+            ForEach(0..<pad.maxY, id: \.self) { y in
+              let blockEntity = pad[x, y]
+              Block(entity: blockEntity, pad: pad)
+                .frame(width: blockSize, height: blockSize)
+            }
           }
         }
       }
     }
+      .padding(.top, 10)
       .onReceive(NotificationCenter.default.publisher(for: GameCenter.gameOver)) { object in
         showGameOverDialog = true
       }
@@ -43,6 +47,38 @@ struct GamePadView: View {
   }
 }
 
+struct GameHeader: View {
+  @ObservedObject var pad: GamePad
+
+  let blockSize: CGFloat
+
+  init(pad: GamePad, blockSize: CGFloat = 24) {
+    self.pad = pad
+
+    self.blockSize = blockSize
+  }
+
+  @Environment(\.colorScheme)
+  var colorScheme
+  var body: some View {
+    ZStack {
+      HStack {
+        Spacer()
+      }
+      let face = pad.isGameOver ?
+        Image(systemName: "xmark.circle") :
+        Image(systemName: "face.smiling")
+
+      face
+        .resizable()
+        .frame(width: blockSize, height: blockSize)
+      HStack {
+        Spacer(minLength: 80)
+        Text("\(pad.flagCount) / \(pad.mineCount)")
+      }
+    }
+  }
+}
 
 struct Block: View {
   @ObservedObject var entity: BlockEntity
@@ -58,21 +94,14 @@ struct Block: View {
 
   @Environment(\.colorScheme)
   var colorScheme
-  @GestureState var flagging = false
-  var blockBackground: some View {
-    get {
-      colorScheme == .dark ? Color.gray : Color.brown
-    }
-  }
 
   var body: some View {
     switch entity.state {
     case .facedown:
       ZStack {
-        blockBackground
+        colorScheme.blockBackground
         if pad.isGameOver && entity.isMine {
-          Image(systemName: "sun.max")
-            .colorInvert()
+          BlockIcon.mine
         }
       }
         .onTapGesture {
@@ -93,20 +122,17 @@ struct Block: View {
         }
     case .flagged:
       ZStack {
-        blockBackground
+        colorScheme.blockBackground
         if pad.isGameOver {
           if entity.isMine {
-            Image(systemName: "sun.max")
-              .colorInvert()
-            Image(systemName: "checkmark")
+            BlockIcon.mine
+            BlockIcon.checkmark
           } else {
-            Image(systemName: "flag.fill")
-              .colorInvert()
-            Image(systemName: "xmark")
+            BlockIcon.flag
+            BlockIcon.xmark
           }
-        }else {
-          Image(systemName: "flag.fill")
-            .colorInvert()
+        } else {
+          BlockIcon.flag
         }
       }
         .onTapGesture {
@@ -121,7 +147,7 @@ struct Block: View {
         }
     case .revealed:
       if entity.isMine {
-        Image(systemName: "sun.max")
+        BlockIcon.mine
       } else {
         Text(entity.mineNearby > 0 ? String(entity.mineNearby) : " ")
           .onTapGesture(count: 2) {

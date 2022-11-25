@@ -46,7 +46,7 @@ class GamePad: ObservableObject, Identifiable {
   @Published var slots: [BlockEntity]
   let maxX, maxY: Int
   @Published var isGameOver = false
-  @State var flagCount = 0
+  @Published var flagCount = 0
   let mineCount: Int
 
   init(name: String, row x: Int, column y: Int, mines: Int) {
@@ -206,6 +206,7 @@ extension GamePad {
     }
     if block.state == .facedown {
       block.state.flagOn()
+      flagCount += 1
     }
   }
 
@@ -215,6 +216,7 @@ extension GamePad {
     }
     if block.state == .flagged {
       block.state.reset()
+      flagCount -= 1
     }
   }
 }

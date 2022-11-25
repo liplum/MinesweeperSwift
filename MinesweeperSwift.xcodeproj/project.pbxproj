@@ -10,7 +10,7 @@
 		BE47918BACAE3D052A373254 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE479040DBB80E9A31C00B4C /* Utils.swift */; };
 		BE47920D67248AE1DAD5DD28 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE479839BCFFFB2FBA31D967 /* Global.swift */; };
 		BE47931CAA70B6ABC44B6EFD /* GameCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47984AD526682CA3153C29 /* GameCreate.swift */; };
-		BE4793E9ED3A5C294052F5B1 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4791F86FB350066B85D54E /* Widgets.swift */; };
+		BE4793E9ED3A5C294052F5B1 /* BlockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4791F86FB350066B85D54E /* BlockIcon.swift */; };
 		BE479600E31AEF97A593C362 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47932DE6BE1CF6760B0753 /* Commands.swift */; };
 		BE4799767A6E2BC43F76D444 /* AppCode_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */; };
 		BE479A7A0C7A49DB95CE568E /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE479015567D93C57A6410A1 /* GameCore.swift */; };
@@ -26,7 +26,7 @@
 		BE479015567D93C57A6410A1 /* GameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
 		BE479040DBB80E9A31C00B4C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BE47907AABEA62F1F70B4C41 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BE4791F86FB350066B85D54E /* Widgets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		BE4791F86FB350066B85D54E /* BlockIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockIcon.swift; sourceTree = "<group>"; };
 		BE47932DE6BE1CF6760B0753 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppCode_icon.png; path = assets/AppCode_icon.png; sourceTree = "<group>"; };
 		BE479839BCFFFB2FBA31D967 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				BE47932DE6BE1CF6760B0753 /* Commands.swift */,
 				BE479040DBB80E9A31C00B4C /* Utils.swift */,
 				BE47984AD526682CA3153C29 /* GameCreate.swift */,
-				BE4791F86FB350066B85D54E /* Widgets.swift */,
+				BE4791F86FB350066B85D54E /* BlockIcon.swift */,
 			);
 			path = MinesweeperSwift;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 				BE479600E31AEF97A593C362 /* Commands.swift in Sources */,
 				BE47918BACAE3D052A373254 /* Utils.swift in Sources */,
 				BE47931CAA70B6ABC44B6EFD /* GameCreate.swift in Sources */,
-				BE4793E9ED3A5C294052F5B1 /* Widgets.swift in Sources */,
+				BE4793E9ED3A5C294052F5B1 /* BlockIcon.swift in Sources */,
 				BE479A7D257AF78092321B7B /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

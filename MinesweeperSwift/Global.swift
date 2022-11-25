@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 
 
-class GameCenter {
+struct GameCenter {
   static let gameOver = Notification.Name("GameOverEvent")
   static let newGame = Notification.Name("NewGameEvent")
 }

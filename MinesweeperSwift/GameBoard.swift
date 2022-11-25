@@ -68,7 +68,6 @@ struct GameHeader: View {
       let face = pad.isGameOver ?
         Image(systemName: "xmark.circle") :
         Image(systemName: "face.smiling")
-
       face
         .resizable()
         .frame(width: blockSize, height: blockSize)
@@ -125,10 +124,8 @@ struct Block: View {
         colorScheme.blockBackground
         if pad.isGameOver {
           if entity.isMine {
-            BlockIcon.mine
             BlockIcon.checkmark
           } else {
-            BlockIcon.flag
             BlockIcon.xmark
           }
         } else {
@@ -154,10 +151,10 @@ struct Block: View {
             pad.flipAround(block: entity)
           }
           .contextMenu {
-            if !pad.isGameOver {
+            if !pad.isGameOver && entity.mineNearby > 0 {
               Button("Flip Around Blocks") {
                 pad.flipAround(block: entity)
-              }
+              }.disabled(!pad.canFlipAround(block: entity))
             }
           }
       }

@@ -126,6 +126,10 @@ extension GamePad {
       }
     }
   }
+}
+
+/// For coordinate checking
+extension GamePad {
 
   static let nearbyDelta = [
     (-1, 1), (0, 1), (1, 1),
@@ -158,6 +162,16 @@ extension GamePad {
       }
     }
   }
+
+  func countNearby(_ center: BlockEntity, where: (BlockEntity) -> Bool) -> Int {
+    var count = 0
+    forEachNearbyMines(center) { other in
+      if `where`(other) {
+        count += 1
+      }
+    }
+    return count
+  }
 }
 
 /// For handling game logic
@@ -181,11 +195,21 @@ extension GamePad {
     }
   }
 
+  func canFlipAround(block center: BlockEntity) -> Bool {
+    let flaggedNearby = countNearby(center) { entity in
+      entity.state == .flagged
+    }
+    return flaggedNearby >= center.mineNearby
+  }
+
   func flipAround(block center: BlockEntity) {
     if isGameOver {
       return
     }
     var metMine = false
+    if !canFlipAround(block: center) {
+      return
+    }
     forEachNearbyMines(center) { other in
       if other.state == .facedown {
         if other.isMine {

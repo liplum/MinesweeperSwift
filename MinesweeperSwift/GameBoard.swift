@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import UniformTypeIdentifiers
 
 struct GamePadView: View {
   @ObservedObject var pad: GamePad
@@ -63,6 +63,11 @@ struct GameHeader: View {
   var body: some View {
     ZStack {
       HStack {
+        if !pad.isGameOver {
+          Image(systemName: "flag.fill").onDrag {
+            NSItemProvider(object: NSString("flag"))
+          }
+        }
         Spacer()
       }
       let face = pad.isGameOver ?
@@ -119,6 +124,10 @@ struct Block: View {
             }
           }
         }
+        .onDrop(of: [UTType.text], isTargeted: nil) { providers in
+          pad.flag(block: entity)
+          return true
+        }
     case .flagged:
       ZStack {
         colorScheme.blockBackground
@@ -154,7 +163,8 @@ struct Block: View {
             if !pad.isGameOver && entity.mineNearby > 0 {
               Button("Flip Around Blocks") {
                 pad.flipAround(block: entity)
-              }.disabled(!pad.canFlipAround(block: entity))
+              }
+                .disabled(!pad.canFlipAround(block: entity))
             }
           }
       }

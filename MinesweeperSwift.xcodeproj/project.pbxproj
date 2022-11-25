@@ -12,7 +12,9 @@
 		BE47931CAA70B6ABC44B6EFD /* GameCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47984AD526682CA3153C29 /* GameCreate.swift */; };
 		BE4793E9ED3A5C294052F5B1 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4791F86FB350066B85D54E /* Widgets.swift */; };
 		BE479600E31AEF97A593C362 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47932DE6BE1CF6760B0753 /* Commands.swift */; };
+		BE4799767A6E2BC43F76D444 /* AppCode_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */; };
 		BE479A7A0C7A49DB95CE568E /* GameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE479015567D93C57A6410A1 /* GameCore.swift */; };
+		BE479A7D257AF78092321B7B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BE47907AABEA62F1F70B4C41 /* README.md */; };
 		EADCEA0D292CB0DD006A19DF /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA0C292CB0DD006A19DF /* App.swift */; };
 		EADCEA0F292CB0DD006A19DF /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCEA0E292CB0DD006A19DF /* Homepage.swift */; };
 		EADCEA11292CB0DE006A19DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EADCEA10292CB0DE006A19DF /* Assets.xcassets */; };
@@ -23,8 +25,10 @@
 /* Begin PBXFileReference section */
 		BE479015567D93C57A6410A1 /* GameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
 		BE479040DBB80E9A31C00B4C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BE47907AABEA62F1F70B4C41 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE4791F86FB350066B85D54E /* Widgets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		BE47932DE6BE1CF6760B0753 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppCode_icon.png; path = assets/AppCode_icon.png; sourceTree = "<group>"; };
 		BE479839BCFFFB2FBA31D967 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		BE47984AD526682CA3153C29 /* GameCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCreate.swift; sourceTree = "<group>"; };
 		EADCEA09292CB0DD006A19DF /* MinesweeperSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinesweeperSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +56,8 @@
 			children = (
 				EADCEA0B292CB0DD006A19DF /* MinesweeperSwift */,
 				EADCEA0A292CB0DD006A19DF /* Products */,
+				BE47907AABEA62F1F70B4C41 /* README.md */,
+				BE4796D5898F1516B4FF2ED9 /* AppCode_icon.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +156,7 @@
 			files = (
 				EADCEA14292CB0DE006A19DF /* Preview Assets.xcassets in Resources */,
 				EADCEA11292CB0DE006A19DF /* Assets.xcassets in Resources */,
+				BE4799767A6E2BC43F76D444 /* AppCode_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +176,7 @@
 				BE47918BACAE3D052A373254 /* Utils.swift in Sources */,
 				BE47931CAA70B6ABC44B6EFD /* GameCreate.swift in Sources */,
 				BE4793E9ED3A5C294052F5B1 /* Widgets.swift in Sources */,
+				BE479A7D257AF78092321B7B /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

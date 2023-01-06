@@ -7,7 +7,7 @@
 ## Acknowledgements
 
 <div>
-<img src="assets/AppCode_icon.png" width="60" height="60" alt="AppCode">
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/AppCode_icon.svg" alt="AppCode logo.">
 </div>
 
 </div>

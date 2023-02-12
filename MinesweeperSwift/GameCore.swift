@@ -182,14 +182,17 @@ extension GamePad {
     if isGameOver {
       return
     }
-    block.state.flip()
-    if block.isMine {
-      isGameOver = true
-      NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
-    } else if block.mineNearby == 0 {
-      forEachNearbyMines(block) { other in
-        if other.state == .facedown {
-          flip(block: other)
+    // async to flip the block to prevent UI jank
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [unowned self] in
+      block.state.flip()
+      if block.isMine {
+        isGameOver = true
+        NotificationCenter.default.post(name: GameCenter.gameOver, object: nil)
+      } else if block.mineNearby == 0 {
+        forEachNearbyMines(block) { other in
+          if other.state == .facedown {
+            flip(block: other)
+          }
         }
       }
     }

@@ -10,10 +10,9 @@ import SwiftUI
 @main
 struct MinesweeperApp: App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-  @State var currentNumber: String = "1"
   var body: some Scene {
     WindowGroup {
-      MinesweeperView()
+      MinesweeperView(config: .easy)
     }
       .commands {
         MinesweeperCommands()

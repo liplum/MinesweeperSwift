@@ -11,14 +11,18 @@ struct GameCenter {
   static let newGame = Notification.Name("NewGameEvent")
 }
 
-struct GameConfig {
+struct GameConfig: Decodable, Encodable, Hashable {
+  let name: String
   let maxX: Int
   let maxY: Int
   let mineCount: Int
 
-  init(row x: Int, column y: Int, mines mineCount: Int) {
+  init(name: String, row x: Int, column y: Int, mines mineCount: Int) {
+    self.name = name
     maxX = x
     maxY = y
     self.mineCount = min(mineCount, maxX * maxY)
   }
+
+  static let easy = GameConfig(name: "easy", row: 8, column: 8, mines: 12)
 }

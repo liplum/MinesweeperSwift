@@ -41,34 +41,39 @@ class BlockEntity: ObservableObject, Identifiable, Equatable {
 }
 
 class GamePad: ObservableObject, Identifiable {
-  static let `default` = GamePad(name: "", row: 0, column: 0, mines: 0)
-  let id: String
   @Published var slots: [BlockEntity]
-  let maxX, maxY: Int
+
+  let config: GameConfig
   @Published var isGameOver = false
   @Published var flagCount = 0
-  let mineCount: Int
 
-  init(name: String, row x: Int, column y: Int, mines mineCount: Int) {
-    id = name
-    maxX = x
-    maxY = y
-    self.mineCount = mineCount
-    slots = (0..<maxX * maxY).map { index in
-      BlockEntity(id: index, x: index / y, y: index % y)
-    }
-  }
-
-  init(name: String, config: GameConfig) {
-    id = name
-    maxX = config.maxX
-    maxY = config.maxY
-    mineCount = config.mineCount
-    slots = (0..<maxX * maxY).map { index in
+  init(config: GameConfig) {
+    self.config = config
+    slots = (0..<config.maxX * config.maxY).map { index in
       BlockEntity(id: index, x: index / config.maxX, y: index % config.maxY)
     }
   }
 
+  var id: String {
+    get {
+      config.name
+    }
+  }
+  var maxX: Int {
+    get {
+      config.maxX
+    }
+  }
+  var maxY: Int {
+    get {
+      config.maxX
+    }
+  }
+  var mineCount: Int {
+    get {
+      config.mineCount
+    }
+  }
   subscript(x: Int, y: Int) -> BlockEntity {
     get {
       slots[x * maxY + y]

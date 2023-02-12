@@ -24,5 +24,5 @@ struct GameConfig: Decodable, Encodable, Hashable {
     self.mineCount = min(mineCount, maxX * maxY)
   }
 
-  static let easy = GameConfig(name: "easy", row: 8, column: 8, mines: 12)
+  static let easy = GameConfig(name: "easy", row: 8, column: 8, mines: 8)
 }

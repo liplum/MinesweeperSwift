@@ -17,9 +17,14 @@ struct MinesweeperView: View {
 
   var body: some View {
     GamePadView(pad: gamePad)
-      .onReceive(NotificationCenter.default.publisher(for: GameCenter.newGame)) { object in
-        gamePad = GamePad(name: "Test Game", row: 8, column: 8, mines: 8)
-        gamePad.generateBlocks()
+      .onReceive(NotificationCenter.default.publisher(for: GameCenter.newGame)) { output in
+        if let config = output.object as? GameConfig {
+          gamePad = GamePad(name: "Test Game", config: config)
+          gamePad.generateBlocks()
+        } else {
+          gamePad = GamePad(name: "Test Game", row: 8, column: 8, mines: 8)
+          gamePad.generateBlocks()
+        }
       }
   }
 }

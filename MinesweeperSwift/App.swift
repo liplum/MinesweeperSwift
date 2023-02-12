@@ -28,9 +28,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationWillUpdate(_ notification: Notification) {
     Utils.removeMainMenuItem(called: "File")
     Utils.removeMainMenuItem(called: "Edit")
-    Utils.removeMainMenuItem(called: "Window")
-    Utils.removeMainMenuItem(called: "View")
-    Utils.removeMainMenuItem(called: "Help")
   }
 }
 

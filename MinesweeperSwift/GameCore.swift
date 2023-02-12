@@ -49,13 +49,23 @@ class GamePad: ObservableObject, Identifiable {
   @Published var flagCount = 0
   let mineCount: Int
 
-  init(name: String, row x: Int, column y: Int, mines: Int) {
+  init(name: String, row x: Int, column y: Int, mines mineCount: Int) {
     id = name
     maxX = x
     maxY = y
-    mineCount = mines
+    self.mineCount = mineCount
     slots = (0..<maxX * maxY).map { index in
       BlockEntity(id: index, x: index / y, y: index % y)
+    }
+  }
+
+  init(name: String, config: GameConfig) {
+    id = name
+    maxX = config.maxX
+    maxY = config.maxY
+    mineCount = config.mineCount
+    slots = (0..<maxX * maxY).map { index in
+      BlockEntity(id: index, x: index / config.maxX, y: index % config.maxY)
     }
   }
 

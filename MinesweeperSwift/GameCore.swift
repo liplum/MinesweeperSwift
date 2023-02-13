@@ -55,19 +55,13 @@ class GamePad: ObservableObject {
   }
 
   var maxX: Int {
-    get {
-      config.maxX
-    }
+    config.maxX
   }
   var maxY: Int {
-    get {
-      config.maxX
-    }
+    config.maxX
   }
   var mineCount: Int {
-    get {
-      config.mineCount
-    }
+    config.mineCount
   }
   subscript(x: Int, y: Int) -> BlockEntity {
     get {
@@ -90,9 +84,7 @@ class GamePad: ObservableObject {
   }
 
   var count: Int {
-    get {
-      slots.count
-    }
+    slots.count
   }
 
   func checkInRange(_ x: Int, _ y: Int) -> Bool {

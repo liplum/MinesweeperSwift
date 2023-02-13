@@ -12,15 +12,14 @@ struct MinesweeperApp: App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
     WindowGroup(for: GameConfig.self) { $config in
-      // TODO: read from default settings
-      let config = $config.wrappedValue ?? .easy
+      let config = $config.wrappedValue ?? UserDefaults.standard.object(forKey: "Default-Game-Config") as? GameConfig ?? .easy
       MinesweeperView(id: 0, config: config)
     }
       .commands {
         MinesweeperCommands()
       }
     Settings {
-      GameCreateView()
+      GameSettingsView().padding(10)
     }
   }
 }

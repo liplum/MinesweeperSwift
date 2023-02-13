@@ -22,6 +22,6 @@ func openGameCreateWindow() {
     contentRect: NSRect(x: 100, y: 100, width: 100, height: 600),
     styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
     backing: .buffered, defer: false)
-  windowRef.contentView = NSHostingView(rootView: GameCreateView())
+  windowRef.contentView = NSHostingView(rootView: GameSettingsView())
   windowRef.makeKeyAndOrderFront(nil)
 }

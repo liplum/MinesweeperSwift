@@ -12,17 +12,15 @@ struct GameCenter {
 }
 
 struct GameConfig: Decodable, Encodable, Hashable {
-  let name: String
   let maxX: Int
   let maxY: Int
   let mineCount: Int
 
-  init(name: String, row x: Int, column y: Int, mines mineCount: Int) {
-    self.name = name
+  init(row x: Int, column y: Int, mines mineCount: Int) {
     maxX = x
     maxY = y
     self.mineCount = min(mineCount, maxX * maxY)
   }
 
-  static let easy = GameConfig(name: "easy", row: 8, column: 8, mines: 8)
+  static let easy = GameConfig(row: 8, column: 8, mines: 8)
 }

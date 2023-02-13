@@ -40,7 +40,7 @@ class BlockEntity: ObservableObject, Identifiable, Equatable {
   }
 }
 
-class GamePad: ObservableObject, Identifiable {
+class GamePad: ObservableObject {
   @Published var slots: [BlockEntity]
 
   let config: GameConfig
@@ -54,11 +54,6 @@ class GamePad: ObservableObject, Identifiable {
     }
   }
 
-  var id: String {
-    get {
-      config.name
-    }
-  }
   var maxX: Int {
     get {
       config.maxX
@@ -79,6 +74,7 @@ class GamePad: ObservableObject, Identifiable {
       slots[x * maxY + y]
     }
     set(newValue) {
+      objectWillChange.send()
       slots[x * maxY + y] = newValue
     }
   }
@@ -88,6 +84,7 @@ class GamePad: ObservableObject, Identifiable {
       slots[index]
     }
     set(newValue) {
+      objectWillChange.send()
       slots[index] = newValue
     }
   }

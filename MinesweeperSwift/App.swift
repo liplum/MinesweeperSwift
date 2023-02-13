@@ -11,13 +11,10 @@ import SwiftUI
 struct MinesweeperApp: App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
-    Window("Minesweeper", id: "default-game") {
-      MinesweeperView(id: 0, config: .easy)
-    }
     WindowGroup(for: GameConfig.self) { $config in
-      if let config = $config.wrappedValue {
-        MinesweeperView(id: 0, config: config)
-      }
+      // TODO: read from default settings
+      let config = $config.wrappedValue ?? .easy
+      MinesweeperView(id: 0, config: config)
     }
       .commands {
         MinesweeperCommands()
@@ -30,7 +27,6 @@ struct MinesweeperApp: App {
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationWillUpdate(_ notification: Notification) {
-    Utils.removeMainMenuItem(called: "File")
     Utils.removeMainMenuItem(called: "Edit")
   }
 }
